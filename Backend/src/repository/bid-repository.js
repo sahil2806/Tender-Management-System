@@ -1,5 +1,5 @@
-import Bid from "../model/bid";
-import CrudRepository from "./crud-repository";
+import Bid from "../model/bid.js";
+import CrudRepository from "./crud-repository.js";
 
 
 class BidRepository  extends CrudRepository {

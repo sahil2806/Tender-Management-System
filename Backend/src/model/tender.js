@@ -1,7 +1,7 @@
 
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const tenderSchema = new mongoose({
+const tenderSchema = new mongoose.Schema({
     tenderName :{
         type:String,
         required:true,
@@ -31,7 +31,7 @@ const tenderSchema = new mongoose({
             type : mongoose.Schema.Types.ObjectId,
             ref : 'Bid'
         }
-    ] 
+    ]
 },{timestamps:true})
 
 const Tender = mongoose.model('Tender',tenderSchema);

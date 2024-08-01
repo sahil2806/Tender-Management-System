@@ -1,4 +1,4 @@
-import TenderRepository from "../repository/tender-repository";
+import TenderRepository from "../repository/tender-repository.js";
 
 class TenderService {
     constructor(){

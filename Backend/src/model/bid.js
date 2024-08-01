@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const bidSchema = new mongoose({
+const bidSchema = new mongoose.Schema({
     bidAmount :{
         type:String,
         required : true,
