@@ -5,12 +5,10 @@ class CrudRepository {
 
     async create(data){
         try {
-            console.log('data',data);
             const result = await this.model.create(data);
              
             return result;
         } catch (error) {
-            console.log(error)
             console.log("Something went wrong in the crud repository layer");
             throw error;
         }

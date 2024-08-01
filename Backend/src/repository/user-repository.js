@@ -8,7 +8,6 @@ class UserRepository extends CrudRepository{
 
     async findBy(data){
         try {
-            console.log('data',data);
             const response = await User.findOne(data);
             return response;
         } catch (error) {
