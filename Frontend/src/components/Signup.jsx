@@ -13,8 +13,11 @@ const Signup = () => {
 
     const create = async(data) => {
         const Info = {
+            "person":data.person,
             "name" : data.name,
             "email" : data.email,
+            "phone" : data.phone,
+            "company" : data.company,
             "password" : data.password,
         }
         setError("")
@@ -46,30 +49,51 @@ const Signup = () => {
                 <form onSubmit={handleSubmit(create)}>
                     <div className='space-y-5'>
                         <Input
-                        label="Full Name: "
-                        placeholder="Enter your full name"
-                        {...register("name", {
-                            required: true,
-                        })}
+                            label="Are you Admin / Vendor : "
+                            placeholder="Enter your Designation"
+                            {...register("person", {
+                                required: true,
+                            })}
                         />
                         <Input
-                        label="Email: "
-                        placeholder="Enter your email"
-                        type="email"
-                        {...register("email", {
-                            required: true,
-                            validate: {
-                                matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                                "Email address must be a valid address",
-                            }
-                        })} 
+                            label="Full Name: "
+                            placeholder="Enter your full name"
+                            {...register("name", {
+                                required: true,
+                            })}
                         />
                         <Input
-                        label="Password: "
-                        type="password"
-                        placeholder="Enter your password"
-                        {...register("password", {
-                            required: true,})}
+                            label="Email: "
+                            placeholder="Enter your email"
+                            type="email"
+                            {...register("email", {
+                                required: true,
+                                validate: {
+                                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                                    "Email address must be a valid address",
+                                }
+                            })} 
+                        />
+                        <Input
+                            label="Phone no: "
+                            placeholder="Enter your Phone no"
+                            {...register("phone", {
+                                required: true,
+                            })} 
+                        />
+                        <Input
+                            label="Company Name: "
+                            placeholder="Enter your Company Name"
+                            {...register("company", {
+                                required: true,
+                            })} 
+                        />
+                        <Input
+                            label="Password: "
+                            type="password"
+                            placeholder="Enter your password"
+                            {...register("password", {
+                                required: true,})}
                         />
                         <button type="submit" className="w-full bg-blue-600 text-wrap px-4 py-2 rounded-lg ">
                             Create Account

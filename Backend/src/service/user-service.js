@@ -1,4 +1,4 @@
-import UserRepository  from "../repository/user-repository.js";
+import UserRepository from "../repository/user-repository.js";
 
 
 class UserService {
@@ -15,9 +15,9 @@ class UserService {
         }
     }
 
-    async getUserByEmail(email){
+    async getUserByEmail({email,person}){
         try {
-            const user = await this.userRepository.findBy({email});
+            const user = await this.userRepository.findBy({email,person});
             return user;
         } catch (error) {
             throw error;
@@ -25,9 +25,9 @@ class UserService {
     }
 
     async signin(data){
-       
         try {
-            const user = await this.getUserByEmail(data.email);
+            const user = await this.getUserByEmail({email:data.email,person:data.person});
+            
             if(!user) {
                 throw {
                     message: 'no user found'
@@ -38,6 +38,7 @@ class UserService {
                     message: 'incorrect password',
                 };
             }
+
             const token = user.genJWT();
             return token;
         } catch(error) {

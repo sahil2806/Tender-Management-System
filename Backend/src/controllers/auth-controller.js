@@ -5,13 +5,16 @@ const userService = new UserService();
 export const signup = async (req, res) => {
     try {
         const response = await userService.signup({
+            person:req.body.person,
+            name: req.body.name,
             email: req.body.email,
+            phone:req.body.phone,
+            company:req.body.company,
             password: req.body.password,
-            name: req.body.name
         });
         return res.status(201).json({
             success: true,
-            message: 'Successfully created a new user',
+            message: `Successfully created a ${req.body.person}`,
             data: response,
             err: {}
         });
@@ -25,7 +28,7 @@ export const signup = async (req, res) => {
     }
 }
 
-
+// localhost:3000/api/v1/login
 export const login = async (req, res) => {
     try {
         const token = await userService.signin(req.body);

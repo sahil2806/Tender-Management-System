@@ -1,24 +1,25 @@
 /* eslint-disable no-unused-vars */
-import React , {useState}from 'react'
-import {useForm} from "react-hook-form"
-import  Input  from "./Input.jsx"
-import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import React, { useState } from 'react'
+import { useForm } from "react-hook-form"
+import { Link, useNavigate } from 'react-router-dom'
+import Input from "./Input.jsx"
 
 const Login = () => {
     const navigate = useNavigate()
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm();
     const [error, setError] = useState("")
     const login = async(data) => {
 
         setError("")
         const Info = {
+            "person" : data.person,
             "email" : data.email,
             "password" : data.password,
         }
         setError("")
         try {
-            const response = await axios.post("http://localhost:3000/api/v1/login",  Info);
+            const response = await axios.post("http://localhost:3000/api/v1/login",Info);
             console.log('response',response);
             setError(response.data.message);
         } catch (error) {
@@ -48,24 +49,31 @@ const Login = () => {
         <form onSubmit={handleSubmit(login)} className='mt-8'>
             <div className='space-y-5'>
                 <Input
-                label="Email: "
-                placeholder="Enter your email"
-                type="email"
-                {...register("email", {
-                    required: true,
-                    validate: {
-                        matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                        "Email address must be a valid address",
-                    }
-                })}
+                    label="Are you Admin / Vendor : "
+                    placeholder="Enter your Designation"
+                    {...register("person", {
+                        required: true,
+                    })}
                 />
                 <Input
-                label="Password: "
-                type="password"
-                placeholder="Enter your password"
-                {...register("password", {
-                    required: true,
-                })}
+                    label="Email: "
+                    placeholder="Enter your email"
+                    type="email"
+                    {...register("email", {
+                        required: true,
+                        validate: {
+                            matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                            "Email address must be a valid address",
+                        }
+                    })}
+                />
+                <Input
+                    label="Password: "
+                    type="password"
+                    placeholder="Enter your password"
+                    {...register("password", {
+                        required: true,
+                    })}
                 />
                 <button
                 type="submit"
