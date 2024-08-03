@@ -25,6 +25,10 @@ const tenderSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    deal: {
+        type: Boolean,   
+        default: false,  
+    },
     bids :[
         {
             type : mongoose.Schema.Types.ObjectId,

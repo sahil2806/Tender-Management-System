@@ -14,8 +14,6 @@ class TenderService {
         }
     }
 
-    
-
     async deleteTender(TenderId){
         try {
             const response = await this.tenderRepository.destroy(TenderId);
