@@ -7,7 +7,7 @@ const bidSchema = new mongoose.Schema({
     },
     tender : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'Tedner'
+        ref : 'Tender'
     } ,
     user :{
         type : mongoose.Schema.Types.ObjectId,

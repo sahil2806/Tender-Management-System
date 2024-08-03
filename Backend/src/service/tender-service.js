@@ -14,14 +14,7 @@ class TenderService {
         }
     }
 
-    async updateTender(TenderId , data){
-        try {
-            const tender = await this.tenderRepository.update(TenderId,data);
-            return tender;
-        } catch (error) {
-            throw {error};
-        }
-    }
+    
 
     async deleteTender(TenderId){
         try {

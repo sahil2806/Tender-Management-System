@@ -40,18 +40,37 @@ export const destroy = async(req,res) => {
     }
 }
 
-export const update = async(req,res) => {
+export const get = async(req,res) => {
     try {
-        const response = await tenderService.updateTender(req.params.id, req.body);
+        const response = await tenderService.getTender(req.params.id);
         return res.status(201).json({
             success: true,
-            message: `Successfully update the Tender`,
+            message: `Successfully fetched a Tender`,
             data: response,
             err: {}
         });
     } catch (error) {
         return res.status(500).json({
-            message: 'Tender is not updated',
+            message: 'Tender is not fetched',
+            data: 'Something went wrong',
+            success: false,
+            err: error
+        });
+    }
+}
+
+export const getAll = async(req,res) => {
+    try {
+        const response = await tenderService.getAllTender();
+        return res.status(201).json({
+            success: true,
+            message: `Successfully fetched All the Tender`,
+            data: response,
+            err: {}
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Tender is not fetched',
             data: 'Something went wrong',
             success: false,
             err: error

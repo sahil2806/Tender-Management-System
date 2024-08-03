@@ -1,6 +1,5 @@
 
 import mongoose from 'mongoose';
-
 const tenderSchema = new mongoose.Schema({
     tenderName :{
         type:String,
