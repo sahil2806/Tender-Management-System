@@ -38,9 +38,8 @@ class UserService {
                     message: 'incorrect password',
                 };
             }
-
-            const token = user.genJWT();
-            return token;
+            // const token = user.genJWT();
+            return user.person;
         } catch(error) {
             throw error;
         }

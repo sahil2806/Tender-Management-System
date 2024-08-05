@@ -13,7 +13,7 @@ const Login = () => {
     const {register, handleSubmit} = useForm();
     const [error, setError] = useState("")
     const login = async(data) => {
-
+    
         setError("")
         const Info = {
             "person" : data.person,
@@ -23,11 +23,11 @@ const Login = () => {
         setError("")
         try {
             const response = await axios.post("http://localhost:3000/api/v1/login",Info);
-            console.log(response)
             if(response){
                 dispatch(authLogin(response));
-                // navigate("/");
+                navigate("/");
             }
+            console.log(error);
             setError(response.data.message);
         } catch (error) {
             setError(error.response.data.data);
