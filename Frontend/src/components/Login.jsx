@@ -23,6 +23,7 @@ const Login = () => {
         setError("")
         try {
             const response = await axios.post("http://localhost:3000/api/v1/login",Info);
+            console.log(response)
             if(response){
                 dispatch(authLogin(response));
                 // navigate("/");

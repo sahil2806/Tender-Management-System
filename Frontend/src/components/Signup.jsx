@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import Input from './Input.jsx'
 import { useDispatch } from 'react-redux';
-import { login } from '../store/authSlice.js'
 
 const Signup = () => {
     const dispatch = useDispatch();
@@ -25,10 +24,6 @@ const Signup = () => {
         setError("")
         try {
             const response = await axios.post("http://localhost:3000/api/v1/signup",  Info);
-            if(response){
-                dispatch(login(response));
-                // navigate("/");
-            }
             setError(response.data.message);
         } catch (error) {
             console.log(error);

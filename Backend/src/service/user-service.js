@@ -45,6 +45,34 @@ class UserService {
             throw error;
         }
     }
+
+    // async isAuthenticated(token){
+    //     try {
+    //         const  response  =   this.verifyToken(token);
+    //         if(!response){
+    //             throw {error:'Invalid Token'};
+    //         }
+    //         const user = await  this.userRepository.get(response.id);
+            
+    //         if(!user){
+    //             throw {error:'No user with the corresponding token exist'};
+    //         }
+    //         return user.id;
+    //     } catch (error) {
+    //         console.log("Something went wrong in the token creation");
+    //         throw error;
+    //     }
+    // }
+
+    // verifyToken(token){
+    //     try {
+    //         const response = jwt.verify(token,'tender_secret');
+    //         return response;
+    //     } catch (error) {
+    //         console.log("Something went wrong in the token validation");
+    //         throw error;
+    //     }
+    // }
 }
 
 export default UserService;
