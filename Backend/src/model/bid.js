@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const bidSchema = new mongoose.Schema({
     bidAmount :{
         type:String,
-        required : true,
+        required : false,
     },
     tender : {
         type : mongoose.Schema.Types.ObjectId,
@@ -13,7 +13,7 @@ const bidSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     }
-})
+},{timestamps:true})
 
 const Bid = mongoose.model('Bid',bidSchema);
 export default Bid;

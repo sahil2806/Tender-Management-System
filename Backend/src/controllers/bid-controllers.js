@@ -4,6 +4,7 @@ const bidService = new BidService();
 
 export const createBid = async(req,res) => {
     try {
+        console.log("sahil")
         const response = await bidService.createBid(req.body.bidAmount , req.query.tender , req.query.user);
         return res.status(201).json({
             success: true,

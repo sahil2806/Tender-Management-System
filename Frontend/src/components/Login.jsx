@@ -4,9 +4,12 @@ import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router-dom'
 import Input from "./Input.jsx"
+import { useDispatch } from 'react-redux'
+import { login as authLogin} from '../store/authSlice.js'
 
 const Login = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const {register, handleSubmit} = useForm();
     const [error, setError] = useState("")
     const login = async(data) => {
@@ -20,7 +23,10 @@ const Login = () => {
         setError("")
         try {
             const response = await axios.post("http://localhost:3000/api/v1/login",Info);
-            console.log('response',response);
+            if(response){
+                dispatch(authLogin(response));
+                // navigate("/");
+            }
             setError(response.data.message);
         } catch (error) {
             setError(error.response.data.data);

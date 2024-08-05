@@ -8,6 +8,8 @@ import apiroutes from './routes/index.js';
  const app = express();
 app.use(cors());
 
+ 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
