@@ -3,7 +3,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div className='text-black w-full h-screen flex text-center' ></div>
+    <div className='text-black w-full h-screen flex text-center' >Home</div>
   )
 }
 

@@ -10,7 +10,6 @@ const Header = () => {
     const authStatus = useSelector((state) => state.auth.status);
     let personInfo = useSelector((state) => state.auth.userData);
     const [info  ,setInfo] =useState(null);
-    console.log('personInfo',personInfo)
     useEffect(() => {
         setInfo(personInfo?.data?.data);
     }, [authStatus,personInfo]);
@@ -40,30 +39,19 @@ const Header = () => {
             slug : "/create-tender",
             person : (info == "Admin"),
             active : authStatus,
-            // person : true
         },
         {
-            name : "All Tender Admin",
+            name : "All Tender",
             slug : "/all-tender",
             person : (info == "Admin"),
             active : authStatus,
-            //  person : true
         },
         {
             name : "Bid Tender",
-            slug : "/create-tender",
+            slug : "/bid-tender",
             person : (info == "Vendor"),
             active : authStatus,
-            // person : true
         },
-        {
-            name : "All Tender vendor",
-            slug : "/all-tender",
-            person : (info == "Vendor"),
-            active : authStatus,
-            // person : true
-        } 
-        
         
     ]
   return (

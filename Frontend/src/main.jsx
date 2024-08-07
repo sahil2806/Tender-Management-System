@@ -13,6 +13,9 @@ import store from './store/store.js'
 
 import {PersistGate} from 'redux-persist/integration/react'
 import {persistStore} from 'redux-persist'
+import CreateTender from './components/admin/CreateTender.jsx'
+import AllTender from './components/admin/AllTender.jsx'
+import BidTender from './components/tender/BidTender.jsx'
 
 let persistor = persistStore(store);
 
@@ -36,6 +39,24 @@ const router = createBrowserRouter([
             element: (
               <Signup />
             ),
+        },
+        {
+          path: "/create-tender",
+          element: (
+            <CreateTender/>
+          ),
+        },
+        {
+          path: "/all-tender",
+          element: (
+            <AllTender/>
+          ),
+        },
+        {
+          path: "/bid-tender",
+          element: (
+            <BidTender/>
+          ),
         },
     ],
 },
