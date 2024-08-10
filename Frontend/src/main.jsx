@@ -16,6 +16,8 @@ import {persistStore} from 'redux-persist'
 import CreateTender from './components/admin/CreateTender.jsx'
 import AllTender from './components/admin/AllTender.jsx'
 import BidTender from './components/tender/BidTender.jsx'
+import TenderDetails from './components/admin/tenderDetails.jsx'
+import TendersList from './components/tender/TendersList.jsx'
 
 let persistor = persistStore(store);
 
@@ -53,11 +55,19 @@ const router = createBrowserRouter([
           ),
         },
         {
-          path: "/bid-tender",
+          path: "/bid-tender/:id",
           element: (
             <BidTender/>
           ),
         },
+        {
+          path: "/tender/:id", 
+          element: <TenderDetails />,
+        },
+        {
+          path:'/tenders',
+          element:<TendersList/>
+        }
     ],
 },
 ])
