@@ -1,9 +1,16 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React ,{useState ,useEffect} from 'react';
 import TenderCard from './TenderCard';
 import { tenders } from '../../utils/tenderData';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const AllTenders = () => {
+  
+
+  
+
+
   return (
     <div className="p-8">
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-100">All Tenders</h1>

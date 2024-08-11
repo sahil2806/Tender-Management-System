@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useId, forwardRef } from 'react';
 
 const Input = forwardRef(function Input({
@@ -12,7 +14,7 @@ const Input = forwardRef(function Input({
         <div className='w-full'>
             {label && (
                 <label 
-                    className='inline-block mb-1 pl-1 text-white'
+                    className='inline-block mb-1 pl-1 text-black'
                     htmlFor={id}
                 >
                     {label}
