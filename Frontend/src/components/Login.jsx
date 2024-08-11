@@ -15,7 +15,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
 
     const login = async (data) => {
-        console.log(data);
+        
         setError("")
         const Info = {
             "person": data.person,

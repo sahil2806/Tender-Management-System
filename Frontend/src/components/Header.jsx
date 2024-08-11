@@ -11,7 +11,7 @@ const Header = () => {
     const [info, setInfo] = useState(null);
 
     useEffect(() => {
-        setInfo(personInfo?.data?.data);
+        setInfo(personInfo?.data?.data?.person);
     }, [authStatus, personInfo]);
 
     const navItems = [

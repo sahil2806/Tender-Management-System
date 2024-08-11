@@ -21,14 +21,13 @@ const CreateTender = () => {
         deal : false
       }
 
-      try {
+    try {
         const response = await axios.post("http://localhost:3000/api/v1/tender", tenderInfo);
-        console.log('response',response);
         setError(response.data.message);
     } catch (error) {
         setError(error.message);
     }
-
+    
   };
 
   useEffect(() => {

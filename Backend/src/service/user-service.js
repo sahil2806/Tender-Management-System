@@ -38,8 +38,13 @@ class UserService {
                     message: 'incorrect password',
                 };
             }
+            const userInfo = {
+                id : user._id,
+                person : user.person
+            }
             // const token = user.genJWT();
-            return user.person;
+            // return user.person;
+            return userInfo;
         } catch(error) {
             throw error;
         }

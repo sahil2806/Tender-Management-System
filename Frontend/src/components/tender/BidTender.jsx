@@ -1,35 +1,66 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import axios from 'axios';
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import TenderDetails from '../admin/tenderDetails';
 import Input from '../Input';
-import { useParams } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { tenders } from '../../utils/tenderData';
-import { motion } from 'framer-motion';
 
-const BidTender = () => {
+const BidTender =   () => {
   const { id } = useParams();
-  const tender = tenders.find((tender) => tender.id === parseInt(id));
+
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [tender, setTender] = useState([]);
 
-  const onSubmit = (data) => {
-    if (!tender) {
-      setError('Tender not found!');
-      setSuccess('');
-      return;
-    }
+  useEffect(   () => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/v1/tender/${id}`);
+        setTender(response.data.data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    fetchData();
+  }, [id]);
 
-    const minBiddingAmount = parseFloat(tender.biddingAmount.replace(/[^0-9.-]+/g, ''));
-    const enteredBiddingAmount = parseFloat(data.biddingAmount);
 
-    if (isNaN(enteredBiddingAmount)) {
-      setError('Please enter a valid bidding amount.');
-      setSuccess('');
-      return;
-    }
+
+  const personInfo = useSelector((state) => state.auth.userData.data.data.person);
+  const personInfoString = JSON.stringify(personInfo);
+  const parsedPersonInfo = JSON.parse(personInfoString);
+
+  const personId = useSelector((state) => state.auth.userData.data.data.id);
+
+
+  const onSubmit = async (data) => {
+      const bidAmount = data.biddingAmount;
+      const tenderId = tender._id;
+
+      if (isNaN(bidAmount)) {
+        setError('Please enter a valid bidding amount.');
+        setSuccess('');
+        return;
+      }
+
+      const bidTender = {
+        bidAmount: bidAmount,
+        tender: tenderId,
+        user: personId
+      }
+
+      
+      try {
+        const response = await axios.post(`http://localhost:3000/api/v1/bid`, bidTender);
+        setSuccess('Bid placed successfully!');
+      } catch (error) {
+        setError(error.message);
+      }
   };
 
   return (
